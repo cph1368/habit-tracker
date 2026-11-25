@@ -43,16 +43,14 @@ function HabitItem({ habit }: HabitItemProps) {
                 <div className="py-3">
                     <span className="font-medium text-zinc-400">{habit.name}</span>
                     <span className="text-sm text-amber-400">🔥 3</span></div>
-                <Button variant="ghost-destructive">Delete</Button>
+                <Button variant="ghost-destructive" className="text-xs">Delete</Button>
             </div>
 
             <div className="flex gap-1.5">
                 {visibleDates.map(date => (
-                    <Button disabled={isFuture(date)} key={date.toISOString()}>
-                    <div className="flex flex-col items-center px-5">
-                        <span className="font-medium">{format(date, "EEE")}</span>
-                        <span className="text-sm">{format(date, "d")}</span>
-                    </div>
+                    <Button className="flex flex-col flex-1 items-center gap-0.5 rounded-lg text-xs"disabled={isFuture(date)} key={date.toISOString()}>
+                   <span className="font-medium">{format(date, "EEE")}</span>
+                    <span className="text-sm">{format(date, "d")}</span>
                 </Button>))}
             </div>
         </div>
