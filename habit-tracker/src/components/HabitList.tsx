@@ -33,25 +33,12 @@ type HabitItemProps = {
     habit: { id: string; name: string }
 }
 function HabitItem({ habit }: HabitItemProps) {
-    const visibleDates = eachDayOfInterval({ start: startOfWeek(new Date()), end: endOfWeek(new Date()) })
+    const visibleDates = eachDayOfInterval({ 
+        start: startOfWeek(new Date(), { weekStartsOn: 1 }), 
+        end: endOfWeek(new Date(), { weekStartsOn: 1 }) })
 
     return (
         <div className="rounded-xl bg-zinc-800 p-4 flex-col gap-3">
-            {/* <div className="flex items-center justify-between">
-                <span className="font-medium text-zinc-400">{habit.name}</span>
-                <span className="text-sm text-amber-400">🔥 3</span>
-            </div>
-            <div className="flex gap-1.5">
-                {visibleDates.map(date => (
-                    <Button key={date.toISOString()}>
-                        <div className="flex flex-col items-center">
-                            <span className="font-medium"> {format(date, "EEE")}</span>
-                            <span>{format(date, "d")}</span>
-                        </div>
-                    </Button>))}
-                <Button>Delete</Button>
-            </div> */}
-
             <div className="flex items-center justify-between">
                 <div className="py-3">
                     <span className="font-medium text-zinc-400">{habit.name}</span>
