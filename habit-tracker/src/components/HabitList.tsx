@@ -31,6 +31,8 @@ type HabitItemProps = {
     habit: { id: string; name: string}
 }
 function HabitItem({ habit }: HabitItemProps) {
+    const visibleDates = [new Date(), new Date(), new Date()]
+
     return (
     <div className="rounded-xl bg-zinc-800 p-4 flex-col gap-3">
     <div className="flex items-center justify-between">
@@ -38,6 +40,13 @@ function HabitItem({ habit }: HabitItemProps) {
         <span className="text-sm text-amber-400">🔥 3</span>
     </div>
     <div className="flex gap-1.5">
+        {visibleDates.map(date => (
+            <Button key={date.toISOString()}>
+            <div className="flex flex-col items-center px-6">
+                  <span className="font-medium"> Mon</span>
+            <span>2</span>
+            </div>
+            </Button>))}
           <Button>Delete</Button>
     </div>
   
