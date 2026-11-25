@@ -1,4 +1,4 @@
-import { endOfWeek, format, startOfWeek } from "date-fns"
+import { endOfWeek, format, isFuture, startOfWeek } from "date-fns"
 import { Button } from "./Button"
 import { eachDayOfInterval } from "date-fns/fp/eachDayOfInterval"
 
@@ -7,7 +7,7 @@ export function HabitList() {
     // const habits = []
     const habits = [
         { id: "1", name: "Hi" },
-        { id: "2", name: "Bye" },
+        // { id: "2", name: "Bye" },
     ]
 
     if (habits.length === 0) {
@@ -47,8 +47,9 @@ function HabitItem({ habit }: HabitItemProps) {
             </div>
 
             <div className="flex gap-1.5">
-                {visibleDates.map(date => (<Button key={date.toISOString()}>
-                    <div className="flex flex-col items-center">
+                {visibleDates.map(date => (
+                    <Button  disabled={isFuture(date)} key={date.toISOString()}>
+                    <div className="flex flex-col items-center px-5">
                         <span className="font-medium">{format(date, "EEE")}</span>
                         <span className="text-sm">{format(date, "d")}</span>
                     </div>
